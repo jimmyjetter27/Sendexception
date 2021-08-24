@@ -1,0 +1,14 @@
+{
+    "name": "jimmyjetter/sendexception",
+    "description": "this package sends an exception to the given endpoint",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {},
+
+    "autoload": {
+        "psr-4": {
+            "Jimmyjetter\\Sendexception\\": "src/"
+        }
+    }
+}
