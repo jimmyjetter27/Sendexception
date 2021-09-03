@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Http;
 
 class SendException
 {
-    public function notifyUser($exception)
+    public function notifyUser($exception_stack, $exception_code = null)
     {
         $endpoint = config('exception-config.cred.endpoint');
         $username = config('exception-config.cred.username');
@@ -17,11 +17,12 @@ class SendException
 
 
         try {
-            return Http::withBody($exception, 'application/json')
-                ->post($endpoint, [
-                    'username' => $username,
-                    'token' => $token,
-                ]);
+
+            return Http::post($endpoint, [
+                'token' => $token,
+                'exception_code' => $exception_code,
+                'exception_stack' => $exception_stack,
+            ]);
         } catch (RequestException $e) {
         }
     }
